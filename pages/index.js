@@ -6,7 +6,7 @@
 * 
 *  Name: Sonam Jamtsho Student ID: 171980212 Date: December 2nd, 2023
 *
-*  Vercel App (Deployed) Link: _____________________________________________________
+*  Vercel App (Deployed) Link: https://assignment6-sage.vercel.app/
 *
 ********************************************************************************/ 
 
