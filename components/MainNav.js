@@ -53,8 +53,6 @@ export default function MainNav() {
             navbarScroll
           >
           <Link href="/" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/"}>Home</Nav.Link></Link>
-          {!token && <><Link href="/register" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/register"}>Register</Nav.Link></Link>
-          <Link href="/login" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link></>}
           {token && <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>Advanced Search</Nav.Link></Link>}
           </Nav>
           {token && <Form className="d-flex" onSubmit={submitForm}>
@@ -79,6 +77,8 @@ export default function MainNav() {
               <NavDropdown.Item  onClick={logout}>Logout</NavDropdown.Item>
           </NavDropdown>
           }
+          {!token && <><Link href="/register" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/register"}>Register</Nav.Link></Link>
+          <Link href="/login" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link></>}
           </Nav>
         </Navbar.Collapse>
       </Container>
