@@ -14,7 +14,10 @@
 import Head from 'next/head'
 import Image from 'react-bootstrap/Image';
 import { Inter } from 'next/font/google'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
+import SideBar from '@/components/SideBar';
+import Slide from '@/components/Slide';
+import Department from '@/components/Department';
 
 const inter = Inter({ subsets: ['latin'] })
 
