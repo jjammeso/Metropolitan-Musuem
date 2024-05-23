@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { Container, Image, Row } from 'react-bootstrap'
-import useSWR from 'swr'
-import Error from 'next/error'
 import styles from '@/styles/Gallery.module.css'
 import DepartmentCard from './DepartmentCard'
 import departmentList from '@/public/data/departmentList.json'
