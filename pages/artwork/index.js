@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import { Row, Col, Card, Pagination } from "react-bootstrap";
+import { Row, Col, Card, Pagination, Container } from "react-bootstrap";
 import ArtworkCard from "@/components/ArtworkCard";
 import useSWR from "swr";
 import Error from "next/error";
 import validObjectIDList from '@/public/data/validObjectIDList.json'
+import Loading from "@/components/Loading";
 
 
 const PER_PAGE = 12
@@ -20,6 +21,7 @@ export default function Artwork(){
     
 
     const {data, error} = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/search?${finalQuery}`, fetcher);
+    console.log('final query', finalQuery)
 
     function previousPage(){
         if (page > 1){
@@ -46,16 +48,12 @@ export default function Artwork(){
         }
     }, [data])
 
-    if (error){
-        return <Error statusCode={404} /> 
-    }
-
-    if (!artworkList) {
-        return null;
-    }
+    if (error)return <Error statusCode={404} /> 
+    if (!artworkList) return <Loading />;
 
     return (
-      <>
+      <Container className="mt-4">
+
       {artworkList !== null ? (
         <Row className="gy-4">
           {artworkList.length > 0 ? (
@@ -74,10 +72,11 @@ export default function Artwork(){
           )}
         </Row>
       ) : null}
+      <br/>
 
       {artworkList !== null && artworkList.length > 0 && (
-        <Row>
-          <Col>
+        <Row className="justify-content-center">
+          <Col xs="auto">
             <Pagination>
               <Pagination.Prev onClick={previousPage} />
               <Pagination.Item>{page}</Pagination.Item>
@@ -86,6 +85,6 @@ export default function Artwork(){
           </Col>
         </Row>
       )}
-    </>
+      </Container>
     )
 }
