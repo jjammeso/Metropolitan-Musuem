@@ -9,9 +9,9 @@ export default function SideBar({dept}) {
         
         <Nav className='flex-column pt-1'>
         <h2>Departments</h2>
-            {departments.map(dept=>{
+            {departments.map((dept,idx)=>{
                 return (
-                    <Nav.Link > {dept.displayName}</Nav.Link>
+                    <Nav.Link key={idx} > {dept.displayName}</Nav.Link>
                 )
             })}
             <Nav.Link></Nav.Link>

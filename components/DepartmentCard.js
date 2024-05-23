@@ -14,6 +14,7 @@ export default function DepartmentCard({ department }) {
         <Container fluid onClick={()=>handleClick(object.departmentID)} className='m-4 p-1 mb-3' style={{cursor:'pointer'}}>
           <Image 
           src={object.primaryImageSmall||'https://via.placeholder.com/375x375.png?text=[+Not+Available+]'}
+          alt=''
           width={300}
           height={300}
           style={{ objectFit: 'cover', }} 

@@ -37,8 +37,11 @@ export default function ArtworkCardDetail({ objectID }) {
     }
   }
 
+
   useEffect(() => {
-    setShowAdded(favouritesList?.includes(objectID))
+    if(token){
+      setShowAdded(favouritesList?.includes(objectID))
+    }
   }, [favouritesList])
 
   if (error) return <Error statusCode={404} />
