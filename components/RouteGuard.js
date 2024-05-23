@@ -7,7 +7,7 @@ import { isAuthenticated } from "../lib/authenticate"
 
 export default function RouteGuard(props) {
 	const router = useRouter()
-	const PUBLIC_PATHS = ["/login", "/", "/register"]
+	const PUBLIC_PATHS = ["/login", "/", "/register", "/artwork", '/search' ]
 	const [favourites, setFavouritesList] = useAtom(favouritesAtom)
 	const [search, setSearchHistory] = useAtom(searchHistoryAtom)
 	const [authorized, setAuthorized] = useState(false)
@@ -15,22 +15,27 @@ export default function RouteGuard(props) {
 	function authCheck(url) {
 		const path = url.split("?")[0]
 		if (!isAuthenticated() && !PUBLIC_PATHS.includes(path)) {
-			setAuthorized(false)
+			if(path.startsWith('/artwork/')){
+				setAuthorized(true)
+			}else{
+				setAuthorized(false)
 			router.push("/login")
+			}
 		} else {
 			setAuthorized(true)
 		}
 	}
 
 	async function updateAtoms() {
-		
-		console.log("Updating atoms...");
-		try {
-			setFavouritesList(await getFavourites());
-			setSearchHistory(await getHistory());
-			console.log("Atoms updated successfully.");
-		} catch (error) {
-			console.error("Error updating atoms:", error);
+		if(isAuthenticated()){
+			try {
+				console.log("Updating atoms...");
+				setFavouritesList(await getFavourites());
+				setSearchHistory(await getHistory());
+				console.log("Atoms updated successfully.");
+			} catch (error) {
+				console.error("Error updating atoms:", error);
+			}		
 		}
 	}
 

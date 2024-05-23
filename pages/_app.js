@@ -2,6 +2,8 @@ import Layout from '@/components/Layout'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { SWRConfig } from 'swr'
 import RouteGuard from '@/components/RouteGuard'
+import '../styles/globals.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export default function App({ Component, pageProps }) {
   return (
