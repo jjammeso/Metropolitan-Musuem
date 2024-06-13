@@ -20,11 +20,11 @@ export default function Favourites() {
                 </Col>
               ))
             ) : (
-              <Card>
-                <Card.Body>
-                  <Card.Text as="div">
-                    <h4>Nothing Here</h4>
-                    Try adding some new artwork to the Collection.{" "}
+              <Card className="w-100" style={{height:'60vh', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <Card.Body className="d-flex justify-content-cetter align-items-center">
+                  <Card.Text as="div" className="text-center">
+                    <h4>Your Art Collection is Empty</h4>
+                    Browse and Start Collecting Arts{" "}
                   </Card.Text>
                 </Card.Body>
               </Card>
