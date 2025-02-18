@@ -14,21 +14,44 @@ export default function SectionCard({ objectID }) {
     if (error) return <Error statusCode={404} />
     if (!data) return null;
 
-    function handleClick(id){
+    function handleClick(id) {
         router.push(`/artwork/${id}`)
     }
 
+    
+
     return (
         <Col>
-            <Card onClick={()=>handleClick(data.objectID)} className='fading w-100 h-100' style={{cursor:'pointer'}}>
-                <Card.Img variant="top" style={{ objectFit: 'cover' }} src={data.primaryImageSmall||'https://via.placeholder.com/375x375.png?text=[+Not+Available+]'} />
-                <Card.Body className='mt-auto'>
-                    <Card.Title>{data.title}</Card.Title>
-                    <Card.Text>
-                        <strong>Artist:</strong> {data?.artistDisplayName?data.artistDisplayName:'N/A'}
+            <Card
+                
+                className="w-100 h-100"
+                style={{
+                    maxWidth: '350px',  // Fixed width for all cards
+                    maxHeight: '420px', // Fixed height for all cards
+                    overflow: 'hidden'
+                }}
+            >
+                <Card.Img
+                    variant="top"
+                    src={data.primaryImageSmall || 'noimage.jpg'}
+                    style={{
+                        height: '70%',  // Image covers 60% of the card height
+                        width: '100%',
+                        objectFit: 'cover'
+                    }}
+                />
+                <Card.Body style={{ height: '35%', overflowY: 'hidden' }}>
+                    <Card.Title className='my-0' style={{ fontSize: '1.3rem', fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {data.title || 'N/A'}
+                    </Card.Title>
+                    <Card.Text style={{ fontSize: '0.9rem' }}>
+                        <strong>Artist:</strong> {data?.artistDisplayName || 'N/A'}<br/>
+                        <strong>Classification: </strong>{data.classification || 'N/A'}<br />
                     </Card.Text>
+                    <button className='fading rounded-pill bg-dark text-light px-3 py-1' onClick={() => handleClick(data.objectID)}>View</button>
                 </Card.Body>
             </Card>
         </Col>
+
     )
 }

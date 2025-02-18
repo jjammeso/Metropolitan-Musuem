@@ -19,7 +19,6 @@ export default function ArtworkCardDetail({ objectID }) {
   const [favouritesList, setFavouritesList] = useAtom(favouritesAtom)
   const [showAdded, setShowAdded] = useState(false);
   let token = readToken()
-  const router = useRouter()
 
 
   async function favouritesClicked() {
@@ -27,7 +26,6 @@ export default function ArtworkCardDetail({ objectID }) {
       if (showAdded) {
         setFavouritesList(await removeFromFavourites(objectID));
         setShowAdded(false);
-
       } else {
         setFavouritesList(await addToFavourites(objectID));
         setShowAdded(true);

@@ -16,6 +16,7 @@ export default function Artwork(){
     const [artworkList, setArtworkList] = useState()
     const [page, setPage] = useState(1)
     const router = useRouter()
+    console.log('loading')
 
       let finalQuery = router.asPath.split('?')[1];
     

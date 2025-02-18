@@ -1,23 +1,19 @@
-.previous{
+.previous, .next{
+    all: unset;
     position: absolute;
-    left:2%;
     top: 43%;
     visibility: hidden; 
     opacity: 0;
     transition: visibility 0s 0.3s, opacity 0.3s ease;
-    font-size: 35px;
-    font-weight: 800;
+    font-size: 60px;
+}
+
+.previous{
+    left:2%;
 }
 
 .next{
-    position: absolute;
     right:2%;
-    top: 43%;
-    visibility: hidden; 
-    opacity: 0;
-    transition: visibility 0s 0.3s, opacity 0.3s ease;
-    font-size: 35px;
-    font-weight: 800;
 }
 
 .container:hover .previous, .container:hover .next{

@@ -11,16 +11,16 @@ export default function DepartmentCard({ department }) {
   }
 
   return (
-        <Container fluid onClick={()=>handleClick(object.departmentID)} className='m-4 p-1 mb-3' style={{cursor:'pointer'}}>
+        <Container fluid onClick={()=>handleClick(object.departmentID)} className='d-flex flex-column rounded p-2 bg-light text-dark' style={{cursor:'pointer', width:'100%', maxwidth:'316px', gap:'25px', height:'400px'}}>
           <Image 
-          src={object.primaryImageSmall||'https://via.placeholder.com/375x375.png?text=[+Not+Available+]'}
+          src={object.primaryImageSmall || 'noimage.jpg'}
+          className=''
           alt=''
           width={300}
           height={300}
           style={{ objectFit: 'cover', }} 
           />
-          <h3>{object.department}</h3>
-          <h3>{object.departmentId}</h3>
+          <h4 className='text-wrap fw-bold'>{object.department}</h4>
         </Container>
   );
 }
