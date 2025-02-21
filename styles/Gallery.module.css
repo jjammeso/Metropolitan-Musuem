@@ -1,23 +1,47 @@
-.previous, .next{
+.previous,
+.next {
     all: unset;
     position: absolute;
     top: 43%;
-    visibility: hidden; 
+    visibility: hidden;
     opacity: 0;
     transition: visibility 0s 0.3s, opacity 0.3s ease;
     font-size: 60px;
 }
 
-.previous{
-    left:2%;
+.previous {
+    left: 2%;
 }
 
-.next{
-    right:2%;
+.next {
+    right: 2%;
 }
 
-.container:hover .previous, .container:hover .next{
+/* .container:hover .previous,
+.container:hover .next {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s ease;
- }
+} */
+
+.container{
+    display: flex;
+}
+
+
+.slider {
+    width: fit-content;
+    height: 'auto';
+    /* overflow-x: hidden; */
+    display: flex;
+    gap: 2em;
+    animation: slide 200s linear infinite;
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(-100%);
+    }to{
+        transform: translateX(0);
+    }
+}

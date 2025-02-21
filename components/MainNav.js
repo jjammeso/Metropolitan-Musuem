@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { searchHistoryAtom } from '@/store';
-import { addToHistory } from '@/lib/userData';
 import { removeToken, readToken } from '@/lib/authenticate';
 
 
@@ -19,25 +18,12 @@ export default function MainNav() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
   let token = readToken();
 
-
-
   function changeExpanded() {
     setIsExpanded(!isExpanded);
   }
 
   function handleNavLink() {
     setIsExpanded(false);
-  }
-
-  const submitForm = async (e) => {
-    e.preventDefault();
-    changeExpanded();
-    const searchField = e.target.elements.search.value;
-    console.log(searchField)
-    if (token) {
-      setSearchHistory(await addToHistory(`title=true&q=${searchField}`))
-    }
-    router.push(`/artwork?title=true&q=${searchField}`)
   }
 
   function logout() {
@@ -59,20 +45,12 @@ export default function MainNav() {
             navbarScroll
           >
             <Link href="/" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/"}>Home</Nav.Link></Link>
+            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>Categories</Nav.Link></Link>
             <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>Advanced Search</Nav.Link></Link>
+            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>About</Nav.Link></Link>
+            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>API Link</Nav.Link></Link>
           </Nav>
-          <Nav className="me-auto my-2 my-lg-0">
-          <Form className="d-flex" onSubmit={submitForm}>
-            <Form.Control
-              type="search"
-              name="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button type="submit" variant="success"><i className="bi bi-search"></i></Button>
-          </Form>&nbsp;
-          </Nav>
+
           <Nav>
             {token &&
               <NavDropdown title={token.userName} id="basic-nav-dropdown" active={router.pathname === "/favourites" || router.pathname === "/history"}>
@@ -85,11 +63,19 @@ export default function MainNav() {
                 <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
               </NavDropdown>
             }
-            {!token && <><Link href="/register" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/register"}>Register</Nav.Link></Link>
-              <Link href="/login" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link></>}
+            {!token && <>
+            <Container className='d-flex column-gap-4'>
+              <Button className='btn btn-warning fw-bold rounded-pill' ><Link href="/register" passHref legacyBehavior ><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/register"}>Register</Nav.Link></Link>
+              </Button>
+
+              <Button className='btn btn-light fw-bold rounded-pill' >
+                <Link href="/login" passHref legacyBehavior><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link>
+              </Button>
+            </Container></>}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar></>
   );
 }
+
