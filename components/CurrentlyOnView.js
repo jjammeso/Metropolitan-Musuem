@@ -29,24 +29,9 @@ export default function CurrentlyOnView() {
         router.push(`./artwork?${q}`)
     }
 
-
-
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -960, behavior: 'smooth' });
-        }
-    };
-
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 960, behavior: 'smooth' });
-        }
-    };
-
     return (
-        <Container fluid className='m-0 p-0'>
-            <h2 className='m-4 fw-bold'>Currently on View</h2>
-            {/* <button className={styles.previous} onClick={scrollLeft}><i class="bi bi-chevron-left"></i></button> */}
+        <Container fluid className='m-0 p-0 pb-4'>
+            <h2 className='px-3 px-md-5 py-5 mx-md-5 fw-bold'>Featured Arts</h2>
             <div className={styles.container}>
                 <div className={styles.slider} ref={scrollRef} >
                     {array.map((item, index) =>
@@ -63,7 +48,6 @@ export default function CurrentlyOnView() {
                     )}
                 </div>
             </div>
-            {/* <button className={styles.next} onClick={scrollRight}><i class="bi bi-chevron-right"></i></button> */}
         </Container>
     )
 }

@@ -10,13 +10,14 @@ import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { searchHistoryAtom } from '@/store';
 import { removeToken, readToken } from '@/lib/authenticate';
-
+import departmentList from '@/public/data/departmentList.json'
 
 export default function MainNav() {
   const router = useRouter()
   const [isExpanded, setIsExpanded] = useState(false);
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
   let token = readToken();
+  const departments = departmentList.departments
 
   function changeExpanded() {
     setIsExpanded(!isExpanded);
@@ -24,6 +25,10 @@ export default function MainNav() {
 
   function handleNavLink() {
     setIsExpanded(false);
+  }
+
+  function handleClick(id){
+    router.push(`/artwork?departmentId=${id}&hasImages=true&q=good`)
   }
 
   function logout() {
@@ -45,10 +50,16 @@ export default function MainNav() {
             navbarScroll
           >
             <Link href="/" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/"}>Home</Nav.Link></Link>
-            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>Categories</Nav.Link></Link>
             <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>Advanced Search</Nav.Link></Link>
-            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>About</Nav.Link></Link>
-            <Link href="/search" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/search"}>API Link</Nav.Link></Link>
+            <Link href="/about" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/about"}>About</Nav.Link></Link>
+            <Link href="https://metmuseum.github.io/" passHref legacyBehavior><Nav.Link onClick={handleNavLink}>API Link</Nav.Link></Link>
+            <NavDropdown title="Departments" id="nav-dropdown">
+            {departments.map((dept, index) => {
+                    return (
+                      <NavDropdown.Item onClick={()=>handleClick(dept.departmentID)} active={router.pathname === "/favourites"}>{dept.department}</NavDropdown.Item>
+                                    )
+                })}
+            </NavDropdown>
           </Nav>
 
           <Nav>
@@ -64,14 +75,14 @@ export default function MainNav() {
               </NavDropdown>
             }
             {!token && <>
-            <Container className='d-flex column-gap-4'>
-              <Button className='btn btn-warning fw-bold rounded-pill' ><Link href="/register" passHref legacyBehavior ><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/register"}>Register</Nav.Link></Link>
-              </Button>
+              <Container className='d-flex column-gap-4 align-items-center py-1'>
+                <Button className='btn btn-warning fw-bold py-0 rounded-pill' ><Link href="/register" passHref legacyBehavior ><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/register"}>Sign Up</Nav.Link></Link>
+                </Button>
 
-              <Button className='btn btn-light fw-bold rounded-pill' >
-                <Link href="/login" passHref legacyBehavior><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link>
-              </Button>
-            </Container></>}
+                <Button className='btn btn-light fw-bold py-0 rounded-pill' >
+                  <Link href="/login" passHref legacyBehavior><Nav.Link className='text-dark' onClick={handleNavLink} active={router.pathname === "/login"}>Login</Nav.Link></Link>
+                </Button>
+              </Container></>}
           </Nav>
         </Navbar.Collapse>
       </Container>

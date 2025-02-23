@@ -28,7 +28,7 @@ export default function Slide() {
 
   return (
     <>
-      <Container fluid className='text-center p-md-5 pb-0 m-0 d-grid gap-1'>
+      <Container fluid className='text-center p-md-5 pb-md-0 m-0 d-grid gap-1'>
         <Row className='justify-content-sm-center pt-4 pt-md-0'>
           <Col xs={11} sm={8} md={6} lg={5}>
             <h1 className='fw-bold'>Discover the Art of the Metropolitan museum</h1>
@@ -53,38 +53,19 @@ export default function Slide() {
             </Form>
           </Col>
         </Row>
-        <Row className='p-md-5 d-flex justify-content-center'>
-          <Col xs={12} md={4} className='p-md-3 py-3'>
+        <Row className='p-md-5  d-flex justify-content-center'>
+          <Col xs={12} md={4} className='p-md-3 py-3 d-none d-md-block'>
             <Image fluid className='px-3' src='image (3).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
           <Col xs={12} md={4} className='p-md-3 py-3'>
             <Image fluid className='px-3' src='image (10).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
-          <Col xs={12} md={4} className='p-md-3 py-3'>
+          <Col xs={12} md={4} className='p-md-3 py-3 d-none d-md-block'>
             <Image fluid className='px-3' src='image (7).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
         </Row>
 
       </Container>
-      {/* <Carousel pause={false} controls={false} className='m-0 p-0'>
-        <Carousel.Item>
-          <Image alt='' src='image (6).jpg' fluid style={{ width:'100%', objectFit: 'cover' }} />
-          <Carousel.Caption>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Image alt='' src='image (9).jpg' fluid style={{width:'100%', objectFit: 'cover' }} />
-          <Carousel.Caption>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Image alt='' src='image.jpg' fluid style={{width:'100%', objectFit: 'cover' }} />
-          <Carousel.Caption>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel> */}
-
-
     </>
   )
 }

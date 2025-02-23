@@ -13,29 +13,31 @@ export default function Section({ title, query }) {
   const router = useRouter()
   const { data, error } = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/search?${query}`, fetcher);
   if (error) return <Error statusCode={404} />
-  if(!data) return null;
+  if (!data) return null;
   const search = query;
 
-  const array = data?.objectIDs.slice(0,3)
+  const array = data?.objectIDs.slice(0, 3)
 
-  function handleClick(q){
-      router.push(`./artwork?${q}`)
+  function handleClick(q) {
+    router.push(`./artwork?${q}`)
   }
 
   return (
     <>
-      <Container className='my-4 p-4'>
-        <Row>
-          <Col md={4}><h2>{title}</h2></Col>
-          <Col md={{offset:'6'}} className='pr-0 fs-4' >&nbsp;&nbsp;<Button variant='light' onClick={()=>handleClick(search)}>View more &gt;&gt;</Button></Col>
+      <Container className='py-3'>
+        <Row className='text-center w-100 my-4'>
+          <Col><h2 className='fw-bold'>{title}</h2></Col>
         </Row>
-        
-        <Row xs={1} md={3} className="gx-4 my-3">
-          {array.map((obj, idx) =>{
-            return (
-              <SectionCard key={idx} objectID={obj} />
-            )
-          })}
+        <Row className='d-flex gap-4 justify-content-around my-4'>
+            {array.map((obj, idx) => {
+              return (
+                <SectionCard key={idx} objectID={obj} />
+              )
+            })}
+        </Row>
+        <Row className='text-center my-4'>
+          <Col className='' ><Button variant='outline-dark rounded-pill' onClick={() => handleClick(search)}>View more &gt;&gt;</Button></Col>
+
         </Row>
       </Container>
     </>

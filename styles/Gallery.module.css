@@ -26,16 +26,17 @@
 
 .container{
     display: flex;
+    overflow: hidden;
+    gap: 1.5em;
 }
 
 
 .slider {
     width: fit-content;
     height: 'auto';
-    /* overflow-x: hidden; */
     display: flex;
-    gap: 2em;
-    animation: slide 200s linear infinite;
+    gap: 1.5em;
+    animation: slide 220s linear infinite;
 }
 
 @keyframes slide {
