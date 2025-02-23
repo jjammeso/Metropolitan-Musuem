@@ -27,7 +27,7 @@ export default function MainNav() {
     setIsExpanded(false);
   }
 
-  function handleClick(id){
+  function handleClick(id) {
     router.push(`/artwork?departmentId=${id}&hasImages=true&q=good`)
   }
 
@@ -54,19 +54,23 @@ export default function MainNav() {
             <Link href="/about" passHref legacyBehavior><Nav.Link onClick={handleNavLink} active={router.pathname === "/about"}>About</Nav.Link></Link>
             <Link href="https://metmuseum.github.io/" passHref legacyBehavior><Nav.Link onClick={handleNavLink}>API Link</Nav.Link></Link>
             <NavDropdown title="Departments" id="nav-dropdown">
-            {departments.map((dept, index) => {
-                    return (
-                      <NavDropdown.Item onClick={()=>handleClick(dept.departmentID)} active={router.pathname === "/favourites"}>{dept.department}</NavDropdown.Item>
-                                    )
+              <Container className='overflow-scroll' style={{ height: '50vh' }}>
+
+                {departments.map((dept, index) => {
+                  return (
+                    <NavDropdown.Item className='bg-light text-dark' onClick={() => handleClick(dept.departmentID)} active={router.pathname === "/favourites"}>{dept.department}</NavDropdown.Item>
+                  )
                 })}
+              </Container>
+
             </NavDropdown>
           </Nav>
 
           <Nav>
             {token &&
-              <NavDropdown title={token.userName} id="basic-nav-dropdown" active={router.pathname === "/favourites" || router.pathname === "/history"}>
+              <NavDropdown title={token.userName} className='border border-light mx-3 px-2 rounded-pill' id="basic-nav-dropdown" active={router.pathname === "/favourites" || router.pathname === "/history"}>
                 <Link href="/favourites" passHref legacyBehavior>
-                  <NavDropdown.Item onClick={handleNavLink} active={router.pathname === "/favourites"}>My Collection</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handleNavLink} active={router.pathname === "/favourites"}>Favourites</NavDropdown.Item>
                 </Link>
                 <Link href="/history" passHref legacyBehavior>
                   <NavDropdown.Item onClick={handleNavLink} active={router.pathname === "/history"}>Search History</NavDropdown.Item>

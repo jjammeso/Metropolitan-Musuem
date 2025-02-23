@@ -7,7 +7,7 @@ import { isAuthenticated } from "../lib/authenticate"
 
 export default function RouteGuard(props) {
 	const router = useRouter()
-	const PUBLIC_PATHS = ["/login", "/", "/register", "/artwork", '/search' ]
+	const PUBLIC_PATHS = ["/login", "/", "/register", "/artwork", '/search', '/about' ]
 	const [favourites, setFavouritesList] = useAtom(favouritesAtom)
 	const [search, setSearchHistory] = useAtom(searchHistoryAtom)
 	const [authorized, setAuthorized] = useState(false)

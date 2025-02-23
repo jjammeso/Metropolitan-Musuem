@@ -45,28 +45,31 @@ export default function AdvancedSearch() {
 
     return (
 
-        <Container className="mt-4">
-
-            <Form onSubmit={handleSubmit(submitForm)}>
+        <Container className="py-5 d-flex flex-column align-items-center">
+            <h2 className="fw-bold" >Advanced Search</h2>
+            <Form onSubmit={handleSubmit(submitForm)} style={{maxWidth:'500px'}}>
                 <Row>
-                    <Col>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Search Query</Form.Label>
-                            <Form.Control  className={errors.q && "is-invalid"} type="text" {...register("q", { required: true })} />
+                    <Col className="m-2">
+                        <Form.Group>
+                            <Form.Label className="">Search Query</Form.Label>
+                            <Form.Control className={errors.q && "is-invalid"} type="text" {...register("q", { required: true })} />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={4}>
+                    <Col className="m-2">
                         <Form.Label>Search By</Form.Label>
-                        <Form.Select {...register("searchBy")} className="mb-3">
+                        <Form.Select {...register("searchBy")} >
                             <option value="title">Title</option>
                             <option value="tags">Tags</option>
                             <option value="artistOrCulture">Artist or Culture</option>
                         </Form.Select>
                     </Col>
-                    <Col md={4}>
-                        <Form.Group className="mb-3">
+
+                </Row>
+                <Row>
+                    <Col className="m-2">
+                        <Form.Group >
                             <Form.Label>Geo Location</Form.Label>
                             <Form.Control type="text" {...register("geoLocation")} />
                             <Form.Text className="text-muted">
@@ -74,8 +77,11 @@ export default function AdvancedSearch() {
                             </Form.Text>
                         </Form.Group>
                     </Col>
-                    <Col md={4}>
-                        <Form.Group className="mb-3">
+
+                </Row>
+                <Row>
+                    <Col className="m-2">
+                        <Form.Group >
                             <Form.Label>Medium</Form.Label>
                             <Form.Control type="text" {...register("medium")} />
                             <Form.Text className="text-muted">
@@ -85,7 +91,7 @@ export default function AdvancedSearch() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className="m-3">
                         <Form.Check
                             type="checkbox"
                             label="Highlighted"
@@ -99,9 +105,8 @@ export default function AdvancedSearch() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <br />
-                        <Button variant="primary" type="submit" disabled={Object.keys(errors).length > 0}>
+                    <Col className="m-3 ">
+                        <Button className='w-100 rounded-pill fs-5' variant="warning" type="submit" disabled={Object.keys(errors).length > 0}>
                             Submit
                         </Button>
                     </Col>

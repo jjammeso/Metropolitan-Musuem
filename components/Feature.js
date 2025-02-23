@@ -6,7 +6,7 @@ export default function Feature() {
         <>
             <Container fluid className='pb-5 text-light bg-dark'>
                 <Row className=''>
-                    <Col md={8} className='my-3 m-md-5 px-md-5'>
+                    <Col md={8} className='mt-5 mx-md-5 px-md-5'>
                         <h2 className=' fw-bold px-2'>Explore a diverse range of art categories at your fingertips.</h2>
                     </Col>
                 </Row>

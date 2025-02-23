@@ -17,7 +17,6 @@ export default function SectionCard({ objectID }) {
         opacity: isHovered? 1:0,
         transition: "transform 0.4s ease-in-out, opacity 0.3s ease-in-out",
         transform: isHovered ? "translateY(0%)" : "translateY(30%)",
-        backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent overlay
         top:'45%', left:'40%',
     }
 
@@ -62,7 +61,7 @@ export default function SectionCard({ objectID }) {
                 </Card.Body>
             </Card>
             <Container className='w-100 position-absolute top-0 start-0' style={containerStyle}>
-                <button className='fading rounded-pill bg-dark text-light px-3 py-1 position-relative' style={hoverStyle} onClick={() => handleClick(data.objectID)}>View</button>
+                {/* <Button variant='light' className='rounded-pill px-3 py-1 position-relative' style={hoverStyle} onClick={() => handleClick(data.objectID)}>View</Button> */}
             </Container>
         </Container>
 
