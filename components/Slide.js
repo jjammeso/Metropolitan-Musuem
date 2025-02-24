@@ -1,9 +1,7 @@
 import React from 'react'
 import { Carousel, Container, Image, Form, Button, Row, Col } from 'react-bootstrap'
 import { Sansita } from 'next/font/google'
-import { addToHistory } from '@/lib/userData'
-import { readToken } from '@/lib/authenticate'
-import { useRouter } from 'next/router'
+import SearchBar from './SearchBar'
 
 const sansita = Sansita({
   weight: '400',
@@ -12,19 +10,6 @@ const sansita = Sansita({
 })
 
 export default function Slide() {
-  const router = useRouter()
-  let token = readToken();
-
-  const submitForm = async (e) => {
-    e.preventDefault();
-    const searchField = e.target.elements.search.value;
-    console.log(searchField)
-    if (token) {
-      setSearchHistory(await addToHistory(`title=true&q=${searchField}`))
-    }
-    router.push(`/artwork?title=true&q=${searchField}`)
-  }
-
 
   return (
     <>
@@ -41,16 +26,7 @@ export default function Slide() {
         </Row>
         <Row className='justify-content-sm-center'>
           <Col className='' style={{minWidth:'300px', maxWidth:'600px'}} sm={8} md={6}>
-            <Form className="d-flex bg-secondary rounded-pill p-4" onSubmit={submitForm}>
-              <Form.Control
-                type="search"
-                name="search"
-                placeholder="Type here"
-                className="rounded-pill"
-                aria-label="Search"
-              />
-              <Button type="submit" className='btn btn-warning rounded-pill d-flex' style={{marginLeft:'-80px'}} ><i className="bi bi-search"></i>&nbsp;&nbsp;Search</Button>
-            </Form>
+           <SearchBar/>
           </Col>
         </Row>
         <Row className='p-md-5  d-flex justify-content-center'>

@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { favouritesAtom } from "@/store";
 import { Row, Card, Col, Container } from "react-bootstrap";
 import ArtworkCard from "@/components/ArtworkCard";
+import SearchBar from "@/components/SearchBar";
 
 export default function Favourites() {
   const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
@@ -10,7 +11,13 @@ export default function Favourites() {
 
   return (
     <>
-      <Container className="mt-4">
+      <Container className=" my-4">
+        <Row className="my-5">
+          <Col sm={12} md={6}><p className="fs-1 fw-bold">My <span className="text-primary">Favourites</span></p></Col>
+           <Col className="m-auto" style={{maxWidth:'600px'}}>
+          <SearchBar />
+          </Col>
+        </Row>
         {favouritesList !== null ? (
           <Row className="gy-4">
             {favouritesList.length > 0 ? (

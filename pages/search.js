@@ -5,7 +5,43 @@ import { useAtom } from "jotai"
 import { searchHistoryAtom } from "@/store"
 import { addToHistory } from "@/lib/userData"
 import { readToken } from "@/lib/authenticate"
+import objects from "@/public/data/validObjectIDList.json"
 
+// const validObject = []
+
+// let x = 0;
+// let y = 79;
+
+// async function getData(start,end){
+//     const smallArray =  objects.objectIDs.slice(start,end);
+//     try {
+//         for(const obj of smallArray){
+//             const res = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${obj}`);
+//             const data =await res.json();
+//             if(data.primaryImage){
+//                 validObject.push(data.objectID);
+//             }
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// function startFetching(){
+//     if(x >= objects.objectIDs.length){
+//         console.log('all is done')
+//         return;
+//     }
+
+//     getData(x,x+y).then(()=>{
+//         x += y;
+//         setTimeout(startFetching, 1000);
+//     })
+
+
+// }
+
+// startFetching();
 
 export default function AdvancedSearch() {
     let queryString = ''

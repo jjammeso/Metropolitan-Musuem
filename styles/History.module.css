@@ -1,3 +1,12 @@
+.historyListItem{
+    cursor:pointer;
+    margin: 10px 0px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .historyListItem:hover{
     background-color: rgb(244, 244, 244);
     cursor:pointer;

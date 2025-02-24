@@ -33,42 +33,46 @@ export default function History() {
 
 
   return (<>
-    <Container className="mt-4">
+    <Container className="my-4 " >
       <Row className='justify-content-center'>
-        <Col xs='auto' md={4}>
+        <Col xs='auto' md={6} className="d-flex justify-content-center align-items-center">
           {parsedHistory.length > 0 && (
             <ListGroup>
               {parsedHistory.map((historyItem, index) => (
-                <ListGroup.Item key={index} onClick={(e) => historyClicked(e, index)} className={styles.historyListItem}>
-                  {" "}
-                  {Object.keys(historyItem).map((key) => (
-                    <span key={key}>
-                      {key}: <strong>{historyItem[key]}</strong>&nbsp;
-                    </span>
-                  ))}
-                  <Button
-                    className="float-end"
-                    variant="danger"
-                    size="sm"
-                    onClick={(e) => removeHistoryClicked(e, index)}
-                  >
-                    &times;
-                  </Button>
-                </ListGroup.Item>))}
+                  <ListGroup.Item key={index} onClick={(e) => historyClicked(e, index)} className={styles.historyListItem}>
+                    {" "}
+                    {Object.keys(historyItem).map((key) => (
+                      <span className="m-2" key={key}>
+                        {key}: <strong>{historyItem[key]}</strong>&nbsp;
+                      </span>
+                    ))}
+                    <Button
+                      className="float-end rounded-0 fs-3 text-danger"
+                      variant="transparent"
+                      size="sm"
+                      onClick={(e) => removeHistoryClicked(e, index)}
+                    >
+                      <i class="bi bi-x-circle"></i>
+                    </Button>
+                  </ListGroup.Item>))}  
             </ListGroup>
           )}
           {parsedHistory.length === 0 && (
-            <Card>
+            <Row className="d-flex justify-content-center align-items-center" style={{minHeight:'50vh'}}>
+              <Col>
+              <Card >
               <Card.Body>
-                <Card.Text as="div">
-                  <h4>Nothing Here</h4>
-                  Try searching for some artwork.{" "}
+                <Card.Text as="div" >
+                  <h4>Search History is Empty</h4>
+                  {" "}
                 </Card.Text>
               </Card.Body>
-            </Card>)}
+            </Card>
+              </Col>
+            </Row>
+            )}
         </Col>
       </Row>
-
     </Container>
 
   </>)

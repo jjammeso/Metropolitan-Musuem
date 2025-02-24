@@ -52,14 +52,12 @@ export default function ArtworkCardDetail({ objectID }) {
   const artistWikidataURL = data.artistWikidata_URL;
 
   return (
-    <Container className="mt-4">
+    <Container className="my-4">
 
       <Card style={{ width: 'auto' }}>
-        {primaryImage && (
-          <Card.Img variant="top" src={primaryImage} alt="Artwork" />
-        )}
+          <Card.Img variant="top" src={primaryImage?primaryImage:'noimage.jpg'} alt="Artwork" />
         <Card.Body>
-          <Card.Title>{data.title || 'N/A'}</Card.Title>
+          <Card.Title className="fs-1">{data.title || 'N/A'}</Card.Title>
           <Card.Text>
             {data.objectDate && (
               <>

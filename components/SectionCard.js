@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Col, Card, Row, Container } from 'react-bootstrap';
+import { Col, Card, Row, Container, Button } from 'react-bootstrap';
 import useSWR from 'swr';
 import Loading from '@/components/Loading';
 import Error from 'next/error';
@@ -61,7 +61,7 @@ export default function SectionCard({ objectID }) {
                 </Card.Body>
             </Card>
             <Container className='w-100 position-absolute top-0 start-0' style={containerStyle}>
-                {/* <Button variant='light' className='rounded-pill px-3 py-1 position-relative' style={hoverStyle} onClick={() => handleClick(data.objectID)}>View</Button> */}
+                <Button variant='light' className='rounded-pill px-3 py-1 position-relative' style={hoverStyle} onClick={() => handleClick(data.objectID)}>View</Button>
             </Container>
         </Container>
 

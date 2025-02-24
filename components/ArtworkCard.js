@@ -1,5 +1,5 @@
 import useSWR from "swr"
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Card, Container, Row } from "react-bootstrap";
 import Link from "next/link";
 import Error from "next/error";
 import Loading from "./Loading";
@@ -18,20 +18,16 @@ export default function ArtworkCard({ objectID }) {
     const [showAdded, setShowAdded] = useState(false);
     let token = readToken()
 
-    console.log('here is list', favouritesList)
 
     async function favouritesClicked() {
-        console.log('here is 1', showAdded)
         if (token) {
             if (showAdded) {
                 setFavouritesList(await removeFromFavourites(objectID));
                 setShowAdded(false);
-                console.log('here is 2', showAdded)
 
             } else {
                 setFavouritesList(await addToFavourites(objectID));
                 setShowAdded(true);
-                console.log('here is 3', showAdded)
 
             }
         } else {
@@ -51,38 +47,33 @@ export default function ArtworkCard({ objectID }) {
 
 
     return (
-        <Card className="w-100 h-100" style={{ maxHeight: '440px' }}>
-            <Container className="p-0" style={{ height: '65%', overflow: 'hidden' }}>
-                <Card.Img
-                    variant="top"
-                    src={
-                        data.primaryImageSmall || 'noimage.jpg'
-                    }
-                    style={{
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'cover'
-                    }}
-                />
-            </Container>
-
-            <Card.Body style={{ height: '40%', overflowY: 'hidden' }}>
-                <Card.Title style={{ fontSize: '1.3rem', fontWeight: 'bold', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <Card className="w-100 h-100 rounded-0" style={{ maxHeight: '440px' }}>
+            <Card.Img
+                className="rounded-0"
+                variant="top"
+                src={
+                    data.primaryImageSmall ? data.primaryImageSmall : 'noimage.jpg'
+                }
+                style={{
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'cover'
+                }}
+            />
+            <Card.Body>
+                <Card.Title className="fs-5 py-1" style={{ whiteSpace: 'nowrap', overflowX: 'hidden', textOverflow: 'ellipsis' }}>
                     {data.title || 'N/A'}
                 </Card.Title>
-                <Card.Text style={{ fontSize: '0.9rem' }}>
+                <Card.Text className="fs-6 bg-transparent">
                     <strong>Date: </strong>{data.objectDate || 'N/A'}<br />
-                    <strong>Classification: </strong>{data.classification || 'N/A'}<br />
+                    <strong>Classification: </strong>{data.classification || 'N/A'}
                 </Card.Text>
-                <Link href={`/artwork/${data.objectID}`} passHref>
-                    <Button variant="warning">View More Details</Button>
-                </Link>
+                <Card.Link href={`/artwork/${data.objectID}`}><Button variant="warning">View More Details</Button></Card.Link>&nbsp;
                 {token && (
-                        <Button onClick={favouritesClicked} className=" border-0 bg-transparent text-danger fs-3">
-                            {<i className={showAdded ? "bi bi-heart-fill" : "bi bi-heart"}></i>}
-                        </Button>
+                    <Button onClick={favouritesClicked} className=" border-0 bg-transparent text-danger fs-1">
+                        {<i className={showAdded ? "bi bi-heart-fill" : "bi bi-heart"}></i>}
+                    </Button>
                 )}
-
             </Card.Body >
         </Card >
     )
