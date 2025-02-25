@@ -10,7 +10,7 @@ export default function Banner() {
             <Row className='row-cols-1 row-cols-md-2 h-100 px-5 gap-4 gap-md-0'>
                 <Col className='p-3 p-md-5 d-flex flex-column justify-content-center gap-3 bg-dark text-light'>
                     <h1 className='fw-bold'>Explore a World of Art</h1>
-                    <p className=''>Dive into a rich tapestry of artistic expression spanning centuries and cultures. Browse through thousands of artworks meticulously curated from the Metropolitan Museum of Art's extensive collection.</p>
+                    <p className=''>Dive into a rich tapestry of artistic expression spanning centuries and cultures. Browse through thousands of artworks meticulously curated from the Metropolitan Museum of Art&apos;s extensive collection.</p>
                     <Link href="/register" className='btn rounded-pill btn-warning text-decoration-none fs-4' active={router.pathname === "/register"}>Sign Up</Link>
                 </Col>
                 <Col className=' m-0 p-0 overflow-hidden' style={{maxHeight:'60vh'}}>

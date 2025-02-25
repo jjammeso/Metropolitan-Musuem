@@ -47,10 +47,9 @@ export default function Artwork() {
       setPage(1);
     }
   }, [data])
-
+  if (!data) return <Loading />;
   if (error) return <Error statusCode={404} />
   if (!artworkList) return <Loading />;
-  console.log('check this out', artworkList)
 
   return (
     <Container className="mt-4">
@@ -85,13 +84,13 @@ export default function Artwork() {
           <Col xs="auto">
             <Pagination>
               <Pagination.Prev onClick={previousPage} disabled={page == 1 ? true : false} />
-              {page > 2 && <Pagination.Item>1</Pagination.Item>}
+              {page > 2 && <Pagination.Item onClick={()=>setPage(1)}>1</Pagination.Item>}
               {page > 2 && <Pagination.Ellipsis />}
-              {page - 1 > 0 && <Pagination.Item>{page - 1}</Pagination.Item>}
+              {page - 1 > 0 && <Pagination.Item onClick={()=>setPage(page - 1)}>{page - 1}</Pagination.Item>}
               <Pagination.Item active>{page}</Pagination.Item>
-              {page + 1 < artworkList.length && <Pagination.Item>{page + 1}</Pagination.Item>}
+              {page + 1 < artworkList.length && <Pagination.Item onClick={()=>setPage(page + 1)}>{page + 1}</Pagination.Item>}
               <Pagination.Ellipsis />
-              {page != artworkList.length && <Pagination.Item>{artworkList.length}</Pagination.Item>}
+              {page != artworkList.length && <Pagination.Item onClick={()=>setPage(artworkList.length)}>{artworkList.length}</Pagination.Item>}
               <Pagination.Next onClick={nextPage} disabled={page == artworkList.length ? true : false} />
             </Pagination>
           </Col>

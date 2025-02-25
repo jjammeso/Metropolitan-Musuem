@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <Container fluid className='p-0 m-0 bg-dark text-secondary' >
       <Row className='text-center fst-italic fs-5 pt-5 m-0'>
-        <p>"This Website is powered by the Metropolitan Museum of Art's API."</p>
+        <p>&quot;This Website is powered by the Metropolitan Museum of Art&apos;s API.&quot;</p>
       </Row>
       <Row className='p-4 m-4 pb-0'>
         <Col md={4}>

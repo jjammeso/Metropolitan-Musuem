@@ -1,4 +1,4 @@
-import { Button, Card, Container} from "react-bootstrap";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import useSWR from "swr";
 import Error from "next/error";
 import { useAtom } from "jotai";
@@ -37,71 +37,97 @@ export default function ArtworkCardDetail({ objectID }) {
 
 
   useEffect(() => {
-    if(token){
+    if (token) {
       setShowAdded(favouritesList?.includes(objectID))
     }
   }, [favouritesList])
 
   if (error) return <Error statusCode={404} />
   if (!data) return <Loading />;
+  console.log(data);
 
-  const primaryImage = data.primaryImage;
+  const primaryImage = data.primaryImage && data.primaryImage.trim() !== "" ? data.primaryImage : '/noimage.jpg';
   const artistDisplayName = data.artistDisplayName || 'N/A';
   const creditLine = data.creditLine || 'N/A';
   const dimensions = data.dimensions || 'N/A';
   const artistWikidataURL = data.artistWikidata_URL;
+  const repository = data.repository;
 
   return (
     <Container className="my-4">
+      <Card className="py-1 px-md-32" >
+        <Card.Title className="fs-1 m-2 fw-bold p-2">{data.title || 'N/A'}</Card.Title>
 
-      <Card style={{ width: 'auto' }}>
-          <Card.Img variant="top" src={primaryImage?primaryImage:'noimage.jpg'} alt="Artwork" />
+        <Card.Img className="my-3 rounded-0" variant="top" src={primaryImage} style={{ maxHeight: '80vh', objectFit: 'contain' }} />
         <Card.Body>
-          <Card.Title className="fs-1">{data.title || 'N/A'}</Card.Title>
           <Card.Text>
             {data.objectDate && (
               <>
-                <strong>Date:</strong> {data.objectDate}
-                <br />
+                <Row className="px-md-3 py-1">
+                  <Col sm={4} className="fw-bold">Date</Col>
+                  <Col sm={8}>{data.objectDate}</Col>
+                </Row>
               </>
             )}
             {data.classification && (
               <>
-                <strong>Classification:</strong> {data.classification}
-                <br />
+                <Row className="px-md-3 py-1">
+                  <Col sm={4} className="fw-bold">Classification</Col>
+                  <Col sm={8}>{data.classification}</Col>
+                </Row>
               </>
             )}
             {data.medium && (
               <>
-                <strong>Medium:</strong> {data.medium}
-                <br />
-                <br />
+                <Row className="px-md-3 py-1">
+                  <Col sm={4} className="fw-bold">Medium</Col>
+                  <Col sm={8}>{data.medium}</Col>
+                </Row>
               </>
             )}
-            <strong>Artist:</strong> {artistDisplayName}
-            {artistWikidataURL && (
-              <a
-                href={artistWikidataURL}
-                target="_blank"
-                rel="noreferrer"
-                style={{ marginLeft: '5px' }}
-              >
-                wiki
-              </a>
+            <Row className="px-md-3 py-1">
+              <Col sm={4} className="fw-bold">Artist</Col>
+              <Col sm={8}>{artistDisplayName}</Col>
+            </Row>
+            <Row className="px-md-3 py-1">
+              {artistWikidataURL && (
+                <a
+                  href={artistWikidataURL}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ marginLeft: '5px' }}
+                >
+                  Wikidata URL
+                </a>
+              )}
+            </Row>
+            <Row className="px-md-3 py-1">
+              <Col sm={4} className="fw-bold">Credit Line</Col>
+              <Col sm={8}>{creditLine}</Col>
+            </Row>
+            <Row className="px-md-3 py-1">
+              <Col sm={4} className="fw-bold">Dimensions</Col>
+              <Col sm={8}>{dimensions}</Col>
+            </Row>
+            {repository && (
+              <>
+                <Row className="px-md-3 py-1">
+                  <Col sm={4} className="fw-bold">Repository</Col>
+                  <Col sm={8}>{repository}</Col>
+                </Row>
+              </>
             )}
-            <br />
-            <strong>Credit Line:</strong> {creditLine}<br />
-            <strong>Dimensions:</strong> {dimensions}
           </Card.Text>
-          <Container onClick={favouritesClicked}>
-          <Button
-          className="fw-bold"
-            variant={showAdded ? "primary" : "outline-primary"}
-          >
-            {showAdded ? "Remove from My Collection" : "Add to My Collection"}
-          </Button>
-          </Container>
-          
+          <Row className="px-md-3 py-1">
+            <Col onClick={favouritesClicked}>
+              <Button
+                className="fw-bold"
+                variant={showAdded ? "outline-danger" : "warning"}
+              >
+                {showAdded ? "Remove from My Favourites" : "Add to My Favourites"}
+              </Button>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
     </Container>

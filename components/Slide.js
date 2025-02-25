@@ -31,13 +31,13 @@ export default function Slide() {
         </Row>
         <Row className='p-md-5  d-flex justify-content-center'>
           <Col xs={12} md={4} className='p-md-3 py-3 d-none d-md-block'>
-            <Image fluid className='px-3' src='image (3).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
+            <Image alt='' fluid className='px-3' src='image (3).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
           <Col xs={12} md={4} className='p-md-3 py-3'>
-            <Image fluid className='px-3' src='image (10).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
+            <Image alt='' fluid className='px-3' src='image (10).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
           <Col xs={12} md={4} className='p-md-3 py-3 d-none d-md-block'>
-            <Image fluid className='px-3' src='image (7).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
+            <Image alt='' fluid className='px-3' src='image (7).jpg' style={{ width: '100%', height: '350px', objectFit: 'cover' }}></Image>
           </Col>
         </Row>
 

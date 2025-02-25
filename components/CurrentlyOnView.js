@@ -4,6 +4,7 @@ import styles from '@/styles/Gallery.module.css'
 import { useRouter } from 'next/router'
 import useSWR from 'swr';
 import SectionCard from './SectionCard';
+import Error from 'next/error';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 

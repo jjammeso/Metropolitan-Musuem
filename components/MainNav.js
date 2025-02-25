@@ -58,7 +58,7 @@ export default function MainNav() {
 
                 {departments.map((dept, index) => {
                   return (
-                    <NavDropdown.Item className='bg-light text-dark' onClick={() => handleClick(dept.departmentID)} active={router.pathname === "/favourites"}>{dept.department}</NavDropdown.Item>
+                    <NavDropdown.Item key={index} className='bg-light text-dark' onClick={() => handleClick(dept.departmentID)} active={router.pathname === "/favourites"}>{dept.department}</NavDropdown.Item>
                   )
                 })}
               </Container>
