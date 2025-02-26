@@ -39,9 +39,9 @@ export default function Login(props) {
       <Row className='justify-content-center'  style={{height:'80%'}}>
         <Col md={6} className='text-dark d-none p-5 d-md-flex flex-column justify-content-center'>
           <h1 className='mx-5 my-3 fw-bold fs-1'>Welcome Back!</h1>
-          {/* <h3 className='mx-5 my-3'>Easily save your favorite arts and explore a world of arts at your fingertips.</h3> */}
+          <h3 className='mx-5 my-3'>Explore your favorite artworks and more!</h3>
         </Col>
-        <Col md={6} className='py-4 py-md-0 d-flex bg-dark flex-column justify-content-center align-items-center'>
+        <Col md={6} className='py-4 rounded py-md-0 d-flex bg-dark flex-column justify-content-center align-items-center'>
           <h2>Login</h2>
           <p>Enter your login information below</p>
           <Form onSubmit={handleSubmit} className='w-100' style={{ maxWidth: '300px' }} >
