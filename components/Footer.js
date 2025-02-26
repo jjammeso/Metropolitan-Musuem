@@ -20,10 +20,8 @@ export default function Footer() {
         </Col>
         <Col md={{span:'3', offset:'1'}} >
           <h4>CONTACT</h4><br />
-          <p><i className="bi bi-geo-alt-fill"></i>&nbsp;Address, City, Country</p>
-          <p><i className="bi bi-mailbox2"></i>&nbsp;XXX XXX</p>
-          <p><i className="bi bi-envelope-at-fill"></i>&nbsp;example@gmail.com</p>
-          <p><i className="bi bi-person-lines-fill"></i>&nbsp;+0 000 000 000</p>
+          <p><i className="bi bi-geo-alt-fill"></i>&nbsp;Toronto, ON, Canada</p>
+          <p><i className="bi bi-envelope-at-fill"></i>&nbsp;sjjamtsho@gmail.com</p>
         </Col>
       </Row>
       <Row className='p-4 m-0 pb-0 justify-content-center'>
