@@ -14,8 +14,8 @@ export default function BannerBottom() {
                     <p>Sign Up to explore and collect amazing artworks</p>
                 </Col>
                 <Col md={4} className='d-flex justify-content-md-end my-auto gap-2 pe-4 me-md-4'>
-                    <Link href="/register" className='btn rounded-pill btn-warning text-decoration-none fs-5' active={router.pathname === "/register"}>Sign Up</Link>
-                    <Link href="/login" className='btn rounded-pill btn-light text-decoration-none fs-5' active={router.pathname === "/login"}>Login</Link>
+                    <Link href="/register" className='btn rounded-pill btn-warning text-decoration-none fs-5' >Sign Up</Link>
+                    <Link href="/login" className='btn rounded-pill btn-light text-decoration-none fs-5' >Login</Link>
                 </Col>
             </Row>
         </Container>

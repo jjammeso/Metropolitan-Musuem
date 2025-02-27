@@ -17,13 +17,6 @@
     right: 2%;
 }
 
-/* .container:hover .previous,
-.container:hover .next {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-} */
-
 .container{
     display: flex;
     overflow: hidden;

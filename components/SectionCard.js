@@ -4,7 +4,6 @@ import useSWR from 'swr';
 import Loading from '@/components/Loading';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -29,7 +28,6 @@ export default function SectionCard({ objectID }) {
 
 
     if (error) return <Error statusCode={404} />
-    if (!data) return null;
 
     function handleClick(id) {
         router.push(`/artwork/${id}`)
@@ -37,8 +35,8 @@ export default function SectionCard({ objectID }) {
 
     return (
         <Container className='position-relative m-0 p-0' style={{
-            width: '350px',  // Fixed width for all cards
-            height: '320px', // Fixed height for all cards
+            width: '350px', 
+            height: '320px', 
             overflow: 'hidden',
         }} onMouseEnter={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
             <Card
@@ -47,16 +45,16 @@ export default function SectionCard({ objectID }) {
                 <Card.Img
                     variant="top"
                     className='m-0 p-0 rounded-0'
-                    src={data.primaryImageSmall || 'noimage.jpg'}
+                    src={data?.primaryImageSmall || 'noimage.jpg'}
                     style={{
-                        height: '85%',  // Image covers 60% of the card height
+                        height: '85%',  
                         width: '100%',
                         objectFit: 'cover'
                     }}
                 />
                 <Card.Body className='bg-transparent px-0'  style={{ height: '15%', overflowY: 'hidden' }}>
                     <Card.Title className='my-0' style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {data.title || 'N/A'}
+                        {data?.title || 'N/A'}
                     </Card.Title>
                 </Card.Body>
             </Card>
