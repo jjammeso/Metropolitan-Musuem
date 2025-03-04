@@ -14,6 +14,7 @@ export default function Register(props) {
 
 
   async function handleSubmit(e) {
+    console.log(user,password, password2)
     e.preventDefault();
     try {
       await registerUser(user, password, password2);
