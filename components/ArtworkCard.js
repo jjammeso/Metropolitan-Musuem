@@ -1,6 +1,5 @@
 import useSWR from "swr"
-import { Button, Card, Container, Row } from "react-bootstrap";
-import Link from "next/link";
+import { Button, Card } from "react-bootstrap";
 import Error from "next/error";
 import Loading from "./Loading";
 import { useAtom } from "jotai";

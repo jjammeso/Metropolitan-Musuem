@@ -21,7 +21,6 @@ export default function SearchBar() {
         router.push(`/artwork?title=true&q=${searchField}`)
     }
 
-
     return (
         <Form className="d-flex bg-secondary rounded-pill p-4" onSubmit={submitForm}>
             <Form.Control

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Col, Card, Row, Container, Button } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import useSWR from 'swr';
-import Loading from '@/components/Loading';
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 

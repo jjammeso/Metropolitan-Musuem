@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Nav, Dropdown } from 'react-bootstrap'
+import { Col, Nav } from 'react-bootstrap'
 
 export default function SideBar({dept}) {
     const departments = dept;
