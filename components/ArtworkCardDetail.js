@@ -6,8 +6,7 @@ import { favouritesAtom } from "@/store";
 import { useState } from "react";
 import { addToFavourites, removeFromFavourites } from "@/lib/userData";
 import { useEffect } from "react";
-import { removeToken, readToken } from '@/lib/authenticate';
-import { useRouter } from "next/router";
+import { readToken } from '@/lib/authenticate';
 import Loading from '@/components/Loading';
 
 

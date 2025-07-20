@@ -1,21 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useAtom } from 'jotai';
-import { searchHistoryAtom } from '@/store';
 import { removeToken, readToken } from '@/lib/authenticate';
 import departmentList from '@/public/data/departmentList.json'
 
 export default function MainNav() {
   const router = useRouter()
   const [isExpanded, setIsExpanded] = useState(false);
-  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
   let token = readToken();
   const departments = departmentList.departments
 
@@ -36,7 +32,6 @@ export default function MainNav() {
     removeToken();
     router.push('/');
   }
-
 
   return (<>
 

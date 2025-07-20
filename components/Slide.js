@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Container, Image, Form, Button, Row, Col } from 'react-bootstrap'
+import { Container, Image, Row, Col } from 'react-bootstrap'
 import { Sansita } from 'next/font/google'
 import SearchBar from './SearchBar'
 
